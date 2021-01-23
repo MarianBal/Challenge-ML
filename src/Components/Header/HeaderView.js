@@ -8,11 +8,11 @@ import './header.scss';
 
 const HeaderView = () => {
   const { header, container, searchButton } = classNames.header;
-  const { placeholder, name, type } = translations.headerText;
+  const { placeholder, name, type, imgAlt } = translations.headerText;
   return (
     <div className={header}>
       <div className={container}>
-        <img src={ML} alt='Logo Mercado Libre' />
+        <img src={ML} alt={imgAlt} />
         <input placeholder={placeholder} name={name} type={type} />
         <div className={searchButton}>
           <img src={search} alt='Botón de búsqueda' />

@@ -1,10 +1,11 @@
 @import './../../resources/colors.scss';
 @import './../../resources/mixin.scss';
+@import './../../resources/medley.scss';
 
 .content {
   width: 100%;
   padding: 0 5px;
-  border-radius: 3px;
+  border-radius: $border-radius;
   background-color: $background-color;
   margin-bottom: 50px;
   @include flexbox(column, flex-start, center);
