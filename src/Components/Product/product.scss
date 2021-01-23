@@ -1,0 +1,27 @@
+@import './../../resources/colors.scss';
+@import './../../resources/mixin.scss';
+
+.product-container {
+  width: 100%;
+  height: 150px;
+  background-color: $background-color;
+  border-bottom: 1px solid $light-color;
+  padding: 8px 0;
+  @include flexbox(row, flex-start, center);
+
+  .image-container {
+    width: 134px;
+    height: 134px;
+    @include flexbox(row, center, center);
+
+    img {
+      width: 100%;
+      height: auto;
+    }
+  }
+  .info-container {
+    width: 100%;
+    height: 100%;
+    background-color: goldenrod;
+  }
+}

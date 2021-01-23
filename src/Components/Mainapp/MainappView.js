@@ -7,19 +7,14 @@ import Content from './../Content';
 
 import './mainapp.scss';
 
-const MainappView = ({ users, handleModal, takeUserId, editUserId }) => {
+const MainappView = () => {
   const { mainContainer, contentContainer } = classNames.mainapp;
   return (
     <div className={mainContainer}>
-      <Header handleModal={handleModal} />
+      <Header />
       <div className={contentContainer}>
-        {' '}
         <Breadcrumb />
-        <Content
-          users={users}
-          takeUserId={takeUserId}
-          editUserId={editUserId}
-        />
+        <Content />
       </div>
     </div>
   );
