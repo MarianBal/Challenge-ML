@@ -10,7 +10,9 @@ const ProductView = ({ result }) => {
   const {
     productContainer,
     imageContainer,
-    infoContainer
+    infoContainer,
+    currency,
+    dataColumn
   } = classNames.product;
 
   const { imgAlt, currencyARG } = translations.productText;
@@ -21,10 +23,18 @@ const ProductView = ({ result }) => {
         <img src={result.thumbnail} alt={result.title} />
       </div>
       <div className={infoContainer}>
-        {result.currency_id === 'ARS' && currencyARG}
-        {result.price}
-        <img src={Shipping} alt={imgAlt} />
-        {result.title}
+        <div className={dataColumn}>
+          <div className={currency}>
+            {result.currency_id === 'ARS' && currencyARG}
+            {result.price}
+            <img src={Shipping} alt={imgAlt} />
+          </div>
+          {result.title}
+        </div>
+
+        <div className={dataColumn}>
+          <span>Capital Federal</span>
+        </div>
       </div>
     </div>
   );

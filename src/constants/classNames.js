@@ -18,6 +18,8 @@ export const classNames = {
   product: {
     productContainer: 'product-container',
     imageContainer: 'image-container',
-    infoContainer: 'info-container'
+    infoContainer: 'info-container',
+    currency: 'currency',
+    dataColumn: 'data-column'
   }
 };
