@@ -6,12 +6,13 @@ import { classNames } from './../../constants/classNames';
 import Header from './../Header';
 import Breadcrumb from './../Breadcrumb';
 import Content from './../Content';
+import ProductDetail from './../ProductDetail';
 
 import './mainapp.scss';
 
 const MainappView = ({ showDetail, setShowDetail }) => {
   const { mainContainer } = classNames.mainapp;
-  const { searchBar, content } = PATHS;
+  const { searchBar, content, detail } = PATHS;
   return (
     <div className={mainContainer}>
       <Header />
@@ -20,6 +21,9 @@ const MainappView = ({ showDetail, setShowDetail }) => {
         <Route exact path={searchBar} />
         <Route path={content}>
           <Content />
+        </Route>
+        <Route path={detail}>
+          <ProductDetail />
         </Route>
       </Switch>
       ;

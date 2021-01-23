@@ -27,13 +27,15 @@ const ProductView = ({ result }) => {
           <div className={currency}>
             {result.currency_id === 'ARS' && currencyARG}
             {result.price}
-            <img src={Shipping} alt={imgAlt} />
+            {result.shipping.free_shipping && (
+              <img src={Shipping} alt={imgAlt} />
+            )}
           </div>
           {result.title}
         </div>
 
         <div className={dataColumn}>
-          <span>Capital Federal</span>
+          <span>{result.address.state_name}</span>
         </div>
       </div>
     </div>
