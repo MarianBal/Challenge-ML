@@ -2,8 +2,9 @@
 @import './../../resources/medley.scss';
 
 .breadcrumb-container {
-  width: 100%;
+  width: 1000px;
   height: 46px;
+  align: center;
   padding: $small-margin 0;
   font-size: 14px;
   color: $medium-color;
