@@ -9,5 +9,11 @@ export const translations = {
   productText: {
     imgAlt: 'Envío',
     currencyARG: '$'
+  },
+  detailText: {
+    newText: 'Nuevo',
+    sold: 'vendidos',
+    buy: 'Comprar',
+    title: 'Descripción del producto'
   }
 };

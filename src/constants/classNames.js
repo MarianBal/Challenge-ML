@@ -21,5 +21,12 @@ export const classNames = {
     infoContainer: 'info-container',
     currency: 'currency',
     dataColumn: 'data-column'
+  },
+  detail: {
+    detailContainer: 'detail-container',
+    firstColum: 'first-column',
+    secondColumn: 'second-column',
+    detailImg: 'detail-img',
+    buyButton: 'buy-button'
   }
 };

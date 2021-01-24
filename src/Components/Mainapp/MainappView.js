@@ -6,46 +6,31 @@ import { classNames } from './../../constants/classNames';
 import Header from './../Header';
 import Breadcrumb from './../Breadcrumb';
 import Content from './../Content';
-import ProductDetail from './../ProductDetail';
+import Detail from './../Detail';
 
 import './mainapp.scss';
 
-const MainappView = ({ showDetail, setShowDetail }) => {
+const MainappView = () => {
   const { mainContainer } = classNames.mainapp;
   const { searchBar, content, detail } = PATHS;
   return (
     <div className={mainContainer}>
       <Header />
-      <Breadcrumb />
       <Switch>
         <Route exact path={searchBar} />
-        <Route path={content}>
+
+        <Route exact path={content}>
+          <Breadcrumb />
           <Content />
         </Route>
-        <Route path={detail}>
-          <ProductDetail />
+
+        <Route exact path={detail}>
+          <Breadcrumb />
+          <Detail />
         </Route>
       </Switch>
-      ;
     </div>
   );
 };
-
-{
-}
-{
-  /* const MainappView = ({ showDetail, setShowDetail }) => {
-  const { mainContainer, contentContainer } = classNames.mainapp;
-  return (
-    <div className={mainContainer}>
-      <Header />
-      <div className={contentContainer}>
-        <Breadcrumb />
-        {showDetail ? 'lalala' : <Content />}
-      </div>
-    </div>
-  );
-}; */
-}
 
 export default MainappView;

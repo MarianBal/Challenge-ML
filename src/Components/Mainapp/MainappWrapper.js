@@ -1,11 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 import MainappView from './MainappView';
 
 const MainappWrapper = () => {
-  const [showDetail, setShowDetail] = useState(true);
-
-  return <MainappView showDetail={showDetail} setShowDetail={setShowDetail} />;
+  return <MainappView />;
 };
 
 export default MainappWrapper;

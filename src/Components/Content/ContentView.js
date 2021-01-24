@@ -1,10 +1,10 @@
 import React from 'react';
 
 import Product from '../Product';
-import './content.scss';
 import { classNames } from './../../constants/classNames';
 import { results } from './helper';
-// import { translations } from './../../constants/tranlations';
+
+import './content.scss';
 
 const ContentView = () => {
   const { content } = classNames.content;

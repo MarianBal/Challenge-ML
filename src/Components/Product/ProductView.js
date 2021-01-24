@@ -1,12 +1,12 @@
 import React from 'react';
 
 import Shipping from '../../img/ic_shipping.png';
-import './product.scss';
 import { classNames } from './../../constants/classNames';
 import { translations } from './../../constants/tranlations';
 
+import './product.scss';
+
 const ProductView = ({ result }) => {
-  console.log(result);
   const {
     productContainer,
     imageContainer,
@@ -25,13 +25,13 @@ const ProductView = ({ result }) => {
       <div className={infoContainer}>
         <div className={dataColumn}>
           <div className={currency}>
-            {result.currency_id === 'ARS' && currencyARG}
-            {result.price}
-            {result.shipping.free_shipping && (
+            {result?.currency_id === 'ARS' && currencyARG}
+            {result?.price}
+            {result?.shipping.free_shipping && (
               <img src={Shipping} alt={imgAlt} />
             )}
           </div>
-          {result.title}
+          {result?.title}
         </div>
 
         <div className={dataColumn}>
