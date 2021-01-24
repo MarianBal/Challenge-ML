@@ -39,7 +39,7 @@ app.get('/search/:query', (req, res) => {
               amount: result.results[i].price,
               decimals: 'Number'
             },
-            picture: result.results[i].picture,
+            picture: result.results[i].thumbnail,
             condition: result.results[i].condition,
             free_shipping: result.results[i].shipping.free_shipping,
             address: {

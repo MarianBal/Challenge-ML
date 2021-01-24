@@ -16,20 +16,19 @@ const ProductView = ({ result }) => {
   } = classNames.product;
 
   const { imgAlt, currencyARG } = translations.productText;
+  console.log(result);
 
   return (
     <div className={productContainer}>
       <div className={imageContainer}>
-        <img src={result.thumbnail} alt={result.title} />
+        <img src={result.picture} alt={result.title} />
       </div>
       <div className={infoContainer}>
         <div className={dataColumn}>
           <div className={currency}>
-            {result?.currency_id === 'ARS' && currencyARG}
-            {result?.price}
-            {result?.shipping.free_shipping && (
-              <img src={Shipping} alt={imgAlt} />
-            )}
+            {result?.price?.currency === 'ARS' && currencyARG}
+            {result?.price?.amount}
+            {result?.free_shipping && <img src={Shipping} alt={imgAlt} />}
           </div>
           {result?.title}
         </div>
