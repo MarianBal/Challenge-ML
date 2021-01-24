@@ -1,3 +1,4 @@
-export const toggleValue = (setter, value) => () => setter(!value);
+export const handleChangeCreator = setter => event =>
+  setter(event.target.value);
 
-export const handleEvent = setter => event => setter(event.target.value);
+export const clearInput = (setter, value) => () => setter(value);
