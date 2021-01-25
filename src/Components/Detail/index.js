@@ -1,2 +1,2 @@
-import DetailView from './DetailView';
-export default DetailView;
+import Detail from './Detail';
+export default Detail;

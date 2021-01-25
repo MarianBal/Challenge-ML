@@ -6,7 +6,7 @@ import Breadcrumb from '../Breadcrumb';
 
 import './detail.scss';
 
-const DetailView = () => {
+const Detail = () => {
   const {
     detailContainer,
     firstColum,
@@ -47,4 +47,4 @@ const DetailView = () => {
   );
 };
 
-export default DetailView;
+export default Detail;

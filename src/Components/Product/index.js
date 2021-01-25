@@ -1,2 +1,2 @@
-import ProductView from './ProductView';
-export default ProductView;
+import Product from './Product';
+export default Product;

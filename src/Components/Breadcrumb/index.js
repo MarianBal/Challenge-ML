@@ -1,2 +1,2 @@
-import BreadcrumbView from './BreadcrumbView';
-export default BreadcrumbView;
+import Breadcrumb from './Breadcrumb';
+export default Breadcrumb;

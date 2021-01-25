@@ -6,7 +6,7 @@ import { translations } from './../../constants/tranlations';
 
 import './product.scss';
 
-const ProductView = ({ result }) => {
+const Product = ({ result }) => {
   const {
     productContainer,
     imageContainer,
@@ -16,7 +16,6 @@ const ProductView = ({ result }) => {
   } = classNames.product;
 
   const { imgAlt, currencyARG } = translations.productText;
-  console.log(result);
 
   return (
     <div className={productContainer}>
@@ -41,4 +40,4 @@ const ProductView = ({ result }) => {
   );
 };
 
-export default ProductView;
+export default Product;

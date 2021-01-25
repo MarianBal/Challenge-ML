@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from 'react';
 
-import ContentView from './ContentView';
 import Product from '../Product';
 import Breadcrumb from '../Breadcrumb';
 import { classNames } from './../../constants/classNames';
 
-const ContentWrapper = props => {
+const Content = props => {
   const [results, setResults] = useState([]);
   const [loaded, setLoaded] = useState(false);
   const search = props.location.search.slice(8);
@@ -37,9 +36,8 @@ const ContentWrapper = props => {
             ))}
           </div>
         </div>
-      ) : // <ContentView categories={results.categories} products={results} />
-      null}
+      ) : null}
     </>
   );
 };
-export default ContentWrapper;
+export default Content;

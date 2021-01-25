@@ -8,7 +8,7 @@ import Detail from './../Detail';
 
 import './mainapp.scss';
 
-const MainappView = () => {
+const Mainapp = () => {
   const { mainContainer } = classNames.mainapp;
 
   return (
@@ -23,4 +23,4 @@ const MainappView = () => {
   );
 };
 
-export default MainappView;
+export default Mainapp;
