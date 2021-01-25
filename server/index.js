@@ -13,7 +13,6 @@ const products = {
     name: 'Mariana',
     lastname: 'Bálsamo'
   },
-  categories: ['uno', 'dos', 'tres'],
   items: []
 };
 
@@ -44,13 +43,32 @@ app.get('/search/:query', (req, res) => {
             free_shipping: result.results[i].shipping.free_shipping,
             address: {
               state_name: result.results[i].address.state_name
-            }
+            },
+            category_id: result.results[i].category_id
           };
           products.items.push(item);
         }
 
         res.json(products);
       }
+    }
+  );
+});
+
+app.get('/categories/:query', (req, res) => {
+  const searchCategory = req.params.query;
+
+  const categories = [];
+
+  request(
+    `https://api.mercadolibre.com/categories/${searchCategory}`,
+    (err, response, body) => {
+      if (!err) {
+        const result = JSON.parse(body);
+
+        result.path_from_root.map(element => categories.push(element));
+      }
+      res.json(categories);
     }
   );
 });

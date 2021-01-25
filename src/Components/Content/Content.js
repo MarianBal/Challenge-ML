@@ -13,10 +13,6 @@ const Content = props => {
 
   const url = `http://localhost:4002/search/${search}`;
 
-  useEffect(() => {
-    apiCall(url);
-  }, [url]);
-
   const apiCall = async url => {
     setLoaded(false);
     const data = await fetch(url);
@@ -25,11 +21,15 @@ const Content = props => {
     setLoaded(true);
   };
 
+  useEffect(() => {
+    apiCall(url);
+  }, [url]);
+
   return (
     <>
       {loaded ? (
         <div>
-          <Breadcrumb categories={results.categories} />
+          <Breadcrumb category={results.items[0].category_id} />
           <div className={content}>
             {results.items.map(element => (
               <Product result={element} />

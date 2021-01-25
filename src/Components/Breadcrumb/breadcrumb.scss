@@ -1,5 +1,6 @@
 @import './../../resources/colors.scss';
 @import './../../resources/medley.scss';
+@import './../../resources/mixin.scss';
 
 .breadcrumb-container {
   width: 1000px;
@@ -8,6 +9,7 @@
   padding: $small-margin 0;
   font-size: 14px;
   color: $medium-color;
+  @include flexbox(row, flex-start, center);
 
   .bold {
     font-weight: bold;
