@@ -27,7 +27,7 @@ const Content = props => {
 
   return (
     <>
-      {loaded ? (
+      {loaded && (
         <div>
           <Breadcrumb category={results.items[0].category_id} />
           <div className={content}>
@@ -36,7 +36,7 @@ const Content = props => {
             ))}
           </div>
         </div>
-      ) : null}
+      )}
     </>
   );
 };

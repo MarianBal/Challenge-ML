@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import Shipping from '../../img/ic_shipping.png';
 import { classNames } from './../../constants/classNames';
@@ -17,26 +18,30 @@ const Product = ({ result }) => {
 
   const { imgAlt, currencyARG } = translations.productText;
 
-  return (
-    <div className={productContainer}>
-      <div className={imageContainer}>
-        <img src={result.picture} alt={result.title} />
-      </div>
-      <div className={infoContainer}>
-        <div className={dataColumn}>
-          <div className={currency}>
-            {result?.price?.currency === 'ARS' && currencyARG}
-            {result?.price?.amount}
-            {result?.free_shipping && <img src={Shipping} alt={imgAlt} />}
-          </div>
-          {result?.title}
-        </div>
+  const urlHome = `/items/${result.id}`;
 
-        <div className={dataColumn}>
-          <span>{result.address.state_name}</span>
+  return (
+    <Link to={urlHome}>
+      <div className={productContainer}>
+        <div className={imageContainer}>
+          <img src={result.picture} alt={result.title} />
+        </div>
+        <div className={infoContainer}>
+          <div className={dataColumn}>
+            <div className={currency}>
+              {result?.price?.currency === 'ARS' && currencyARG}
+              {result?.price?.amount}
+              {result?.free_shipping && <img src={Shipping} alt={imgAlt} />}
+            </div>
+            {result?.title}
+          </div>
+
+          <div className={dataColumn}>
+            <span>{result.address.state_name}</span>
+          </div>
         </div>
       </div>
-    </div>
+    </Link>
   );
 };
 

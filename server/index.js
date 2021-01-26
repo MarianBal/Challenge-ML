@@ -51,6 +51,11 @@ app.get('/search/:query', (req, res) => {
 
         res.json(products);
       }
+      if (err) {
+        console.log(err);
+        res.status(400).send(err);
+        return;
+      }
     }
   );
 });
@@ -67,8 +72,46 @@ app.get('/categories/:query', (req, res) => {
         const result = JSON.parse(body);
 
         result.path_from_root.map(element => categories.push(element));
+        res.json(categories);
       }
-      res.json(categories);
+
+      if (err) {
+        console.log(err);
+        res.status(400).send(err);
+        return;
+      }
+    }
+  );
+});
+
+app.get('/items/:query', (req, res) => {
+  const itemId = req.params.query;
+
+  request(
+    `https://api.mercadolibre.com/items/${itemId}`,
+    (err, response, body) => {
+      if (!err) {
+        const result = JSON.parse(body);
+
+        const item = {
+          id: result.id,
+          title: result.title,
+          price: result.price,
+          category_id: result.category_id,
+          pictures: result.pictures,
+          condition: result.condition,
+          sold_quantity: result.sold_quantity,
+          sold_currency_id: result.currency_id
+        };
+
+        res.json(item);
+      }
+
+      if (err) {
+        console.log(err);
+        res.status(400).send(err);
+        return;
+      }
     }
   );
 });
