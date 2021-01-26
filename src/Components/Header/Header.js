@@ -16,7 +16,13 @@ const Header = () => {
   const addressSearch = `search?search=${search}`;
   const urlHome = '/';
   const { header, container, searchButton } = classNames.header;
-  const { placeholder, name, type, imgAlt } = translations.headerText;
+  const {
+    placeholder,
+    name,
+    type,
+    imgAlt,
+    buttonAlt
+  } = translations.headerText;
   return (
     <div className={header}>
       <div className={container}>
@@ -39,7 +45,7 @@ const Header = () => {
             className={searchButton}
             onClick={() => clearInput(setSearch, '')}
           >
-            <img src={searchImage} alt='Botón de búsqueda' />
+            <img src={searchImage} alt={buttonAlt} />
           </div>
         </Link>
       </div>

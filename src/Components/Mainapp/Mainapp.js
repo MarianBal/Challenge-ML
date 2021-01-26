@@ -16,8 +16,8 @@ const Mainapp = () => {
       <Header />
       <Switch>
         <Route exact path='/' />
-        <Route path='/search' component={Content} />
-        <Route path='/items/:id' component={Detail} strict />
+        <Route path='/search' component={Content} strict />
+        <Route path='/items/:id' component={Detail} exact />
       </Switch>
     </div>
   );

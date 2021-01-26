@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 
 import Product from '../Product';
 import Breadcrumb from '../Breadcrumb';
+import apiCall from '../../utils/apiCall';
 import { classNames } from './../../constants/classNames';
 
 const Content = props => {
@@ -13,16 +14,8 @@ const Content = props => {
 
   const url = `http://localhost:4002/search/${search}`;
 
-  const apiCall = async url => {
-    setLoaded(false);
-    const data = await fetch(url);
-    const returnedData = await data.json();
-    setResults(returnedData);
-    setLoaded(true);
-  };
-
   useEffect(() => {
-    apiCall(url);
+    apiCall(url, setLoaded, setResults);
   }, [url]);
 
   return (

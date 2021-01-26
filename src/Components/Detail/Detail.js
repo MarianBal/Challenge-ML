@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { classNames } from './../../constants/classNames';
 import { translations } from './../../constants/tranlations';
+import apiCall from '../../utils/apiCall';
 import Breadcrumb from '../Breadcrumb';
 
 import './detail.scss';
 
 const Detail = props => {
-  const [result, setResult] = useState([]);
+  const [result, setResult] = useState({});
+  const [description, setDescription] = useState({});
   const [loaded, setLoaded] = useState(false);
   const productId = props.match.params.id;
   const {
@@ -19,18 +21,12 @@ const Detail = props => {
   const { newText, sold, buy, title } = translations.detailText;
 
   const url = `http://localhost:4002/items/${productId}`;
-
-  const apiCall = async url => {
-    setLoaded(false);
-    const data = await fetch(url);
-    const returnedData = await data.json();
-    setResult(returnedData);
-    setLoaded(true);
-  };
+  const detailUrl = `http://localhost:4002/items/${productId}/description`;
 
   useEffect(() => {
-    apiCall(url);
-  }, [url]);
+    apiCall(url, setLoaded, setResult);
+    apiCall(detailUrl, setLoaded, setDescription);
+  }, [url, detailUrl]);
   console.log(result);
   return (
     <>
@@ -58,7 +54,7 @@ const Detail = props => {
             </div>
             <div className={firstColum}>
               <div>{title}</div>
-              {/* <div>{detail?.plain_text}</div> */}
+              <div>{description?.plain_text}</div>
             </div>
           </div>
         </div>

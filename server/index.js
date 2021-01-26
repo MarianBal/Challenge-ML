@@ -8,26 +8,24 @@ app.use(express.json());
 
 const port = 4002;
 
-const products = {
-  author: {
-    name: 'Mariana',
-    lastname: 'Bálsamo'
-  },
-  items: []
-};
-
 let item = {};
 
 app.get('/search/:query', (req, res) => {
   const searchProduct = req.params.query;
+
+  const products = {
+    author: {
+      name: 'Mariana',
+      lastname: 'Bálsamo'
+    },
+    items: []
+  };
 
   request(
     `https://api.mercadolibre.com/sites/MLA/search?q=${searchProduct}`,
     (err, response, body) => {
       if (!err) {
         const result = JSON.parse(body);
-
-        products.items = [];
 
         for (let i = 0; i <= 3; i++) {
           item = {
@@ -87,24 +85,51 @@ app.get('/categories/:query', (req, res) => {
 app.get('/items/:query', (req, res) => {
   const itemId = req.params.query;
 
+  const item = {
+    author: {
+      name: 'Mariana',
+      lastname: 'Bálsamo'
+    },
+    item: {}
+  };
+
   request(
     `https://api.mercadolibre.com/items/${itemId}`,
     (err, response, body) => {
       if (!err) {
         const result = JSON.parse(body);
 
-        const item = {
-          id: result.id,
-          title: result.title,
-          price: result.price,
-          category_id: result.category_id,
-          pictures: result.pictures,
-          condition: result.condition,
-          sold_quantity: result.sold_quantity,
-          sold_currency_id: result.currency_id
+        item.id = result.id;
+        item.title = result.title;
+        item.price = {
+          currency: result.currency_id,
+          amount: result.price
         };
 
-        res.json(item);
+        item.category_id = result.category_id;
+        item.picture = result.pictures[0];
+        item.condition = result.condition;
+        item.sold_quantity = result.sold_quantity;
+        item.sold_currency_id = result.currency_id;
+
+        request(
+          `https://api.mercadolibre.com/items/${itemId}/description`,
+          (err, response, body) => {
+            if (!err) {
+              const result = JSON.parse(body);
+
+              item.description = result.plain_text;
+
+              res.json(item);
+            }
+
+            if (err) {
+              console.log(err);
+              res.status(400).send(err);
+              return;
+            }
+          }
+        );
       }
 
       if (err) {
@@ -116,6 +141,25 @@ app.get('/items/:query', (req, res) => {
   );
 });
 
+app.get('/items/:query/description', (req, res) => {
+  const itemId = req.params.query;
+
+  request(
+    `https://api.mercadolibre.com/items/${itemId}/description`,
+    (err, response, body) => {
+      if (!err) {
+        const result = JSON.parse(body);
+        res.json(result);
+      }
+
+      if (err) {
+        console.log(err);
+        res.status(400).send(err);
+        return;
+      }
+    }
+  );
+});
 app.listen(port, function () {
   console.log(`App listening on port ${port}!`);
 });

@@ -3,7 +3,8 @@ export const translations = {
     placeholder: 'Nunca dejes de buscar',
     name: 'search',
     type: 'text',
-    imgAlt: 'Logo Mercado Libre'
+    imgAlt: 'Logo Mercado Libre',
+    buttonAlt: 'Botón de búsqueda'
   },
 
   productText: {
