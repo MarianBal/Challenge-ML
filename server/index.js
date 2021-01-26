@@ -113,7 +113,6 @@ app.get('/items/:query', (req, res) => {
         item.condition = result.condition;
         item.sold_quantity = result.sold_quantity;
         item.sold_currency_id = result.currency_id;
-        console.log(item);
 
         request(
           `https://api.mercadolibre.com/items/${itemId}/description`,

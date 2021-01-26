@@ -8,7 +8,6 @@ import './detail.scss';
 
 const Detail = props => {
   const [result, setResult] = useState({});
-  const [description, setDescription] = useState({});
   const [loaded, setLoaded] = useState(false);
   const productId = props.match.params.id;
   const {
@@ -21,13 +20,11 @@ const Detail = props => {
   const { newText, sold, buy, title } = translations.detailText;
 
   const url = `http://localhost:4002/items/${productId}`;
-  const detailUrl = `http://localhost:4002/items/${productId}/description`;
 
   useEffect(() => {
     apiCall(url, setLoaded, setResult);
-    apiCall(detailUrl, setLoaded, setDescription);
-  }, [url, detailUrl]);
-  console.log(result);
+  }, [url]);
+
   return (
     <>
       {loaded && (
@@ -36,25 +33,25 @@ const Detail = props => {
           <div className={detailContainer}>
             <div className={firstColum}>
               <div className={detailImg}>
-                <img src={result?.pictures[0]?.url} alt={result?.title} />
+                <img src={result?.item?.picture?.url} alt={result?.title} />
               </div>
             </div>
             <div className={secondColumn}>
               <div>
-                {result?.condition === 'new' && `${newText} - `}
-                {result?.sold_quantity} {sold}
+                {result?.item?.condition === 'new' && `${newText} - `}
+                {result?.item?.sold_quantity} {sold}
               </div>
-              <div>{result?.title}</div>
+              <div>{result?.item?.title}</div>
               <div>
-                {result?.currency_id === 'ARS' &&
+                {result?.item?.price?.currency === 'ARS' &&
                   translations.productText.currencyARG}
-                {result?.price}
+                {result?.item?.price?.amount}
               </div>
               <div className={buyButton}>{buy}</div>
             </div>
             <div className={firstColum}>
               <div>{title}</div>
-              <div>{description?.plain_text}</div>
+              <div>{result?.item?.description}</div>
             </div>
           </div>
         </div>
