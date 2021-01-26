@@ -85,7 +85,7 @@ app.get('/categories/:query', (req, res) => {
 app.get('/items/:query', (req, res) => {
   const itemId = req.params.query;
 
-  const item = {
+  const product = {
     author: {
       name: 'Mariana',
       lastname: 'Bálsamo'
@@ -99,6 +99,8 @@ app.get('/items/:query', (req, res) => {
       if (!err) {
         const result = JSON.parse(body);
 
+        const { item } = product;
+
         item.id = result.id;
         item.title = result.title;
         item.price = {
@@ -111,6 +113,7 @@ app.get('/items/:query', (req, res) => {
         item.condition = result.condition;
         item.sold_quantity = result.sold_quantity;
         item.sold_currency_id = result.currency_id;
+        console.log(item);
 
         request(
           `https://api.mercadolibre.com/items/${itemId}/description`,
@@ -120,7 +123,7 @@ app.get('/items/:query', (req, res) => {
 
               item.description = result.plain_text;
 
-              res.json(item);
+              res.json(product);
             }
 
             if (err) {
@@ -141,25 +144,6 @@ app.get('/items/:query', (req, res) => {
   );
 });
 
-app.get('/items/:query/description', (req, res) => {
-  const itemId = req.params.query;
-
-  request(
-    `https://api.mercadolibre.com/items/${itemId}/description`,
-    (err, response, body) => {
-      if (!err) {
-        const result = JSON.parse(body);
-        res.json(result);
-      }
-
-      if (err) {
-        console.log(err);
-        res.status(400).send(err);
-        return;
-      }
-    }
-  );
-});
 app.listen(port, function () {
   console.log(`App listening on port ${port}!`);
 });
