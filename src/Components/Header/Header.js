@@ -13,7 +13,7 @@ import { clearInput } from '../../utils/handleSetters';
 const Header = () => {
   const [search, setSearch] = useState('');
 
-  const addressSearch = `search?search=${search}`;
+  const addressSearch = `/search/${search}`;
   const urlHome = '/';
   const { header, container, searchButton } = classNames.header;
   const {

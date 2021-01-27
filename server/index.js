@@ -8,10 +8,10 @@ app.use(express.json());
 
 const port = 4002;
 
-let item = {};
-
 app.get('/search/:query', (req, res) => {
   const searchProduct = req.params.query;
+
+  let item = {};
 
   const products = {
     author: {

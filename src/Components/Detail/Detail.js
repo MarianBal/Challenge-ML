@@ -3,6 +3,7 @@ import { classNames } from './../../constants/classNames';
 import { translations } from './../../constants/tranlations';
 import apiCall from '../../utils/apiCall';
 import Breadcrumb from '../Breadcrumb';
+import Header from '../Header';
 
 import './detail.scss';
 
@@ -18,7 +19,7 @@ const Detail = props => {
     buyButton
   } = classNames.detail;
   const { newText, sold, buy, title } = translations.detailText;
-
+  console.log('algo');
   const url = `http://localhost:4002/items/${productId}`;
 
   useEffect(() => {
@@ -27,9 +28,10 @@ const Detail = props => {
 
   return (
     <>
+      <Header />
       {loaded && (
         <div>
-          <Breadcrumb category={result.category_id} />
+          <Breadcrumb category={result.item.category_id} />
           <div className={detailContainer}>
             <div className={firstColum}>
               <div className={detailImg}>

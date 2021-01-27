@@ -13,11 +13,10 @@ const Mainapp = () => {
 
   return (
     <div className={mainContainer}>
-      <Header />
       <Switch>
-        <Route exact path='/' />
-        <Route path='/search' component={Content} strict />
-        <Route path='/items/:id' component={Detail} exact />
+        <Route exact path='/' component={Header} />
+        <Route path='/search/:category' component={Content} />
+        <Route path='/items/:id' component={Detail} />
       </Switch>
     </div>
   );
