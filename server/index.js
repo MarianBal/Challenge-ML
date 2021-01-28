@@ -27,25 +27,25 @@ app.get('/search/:query', (req, res) => {
       if (!err) {
         const result = JSON.parse(body);
 
-        for (let i = 0; i <= 3; i++) {
+        result.results.map(element => {
           item = {
-            id: result.results[i].id,
-            title: result.results[i].title,
+            id: element.id,
+            title: element.title,
             price: {
-              currency: result.results[i].currency_id,
-              amount: result.results[i].price,
+              currency: element.currency_id,
+              amount: element.price,
               decimals: 'Number'
             },
-            picture: result.results[i].thumbnail,
-            condition: result.results[i].condition,
-            free_shipping: result.results[i].shipping.free_shipping,
+            picture: element.thumbnail,
+            condition: element.condition,
+            free_shipping: element.shipping.free_shipping,
             address: {
-              state_name: result.results[i].address.state_name
+              state_name: element.address.state_name
             },
-            category_id: result.results[i].category_id
+            category_id: element.category_id
           };
-          products.items.push(item);
-        }
+          return products.items.push(item);
+        });
 
         res.json(products);
       }

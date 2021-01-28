@@ -9,17 +9,17 @@ import { classNames } from './../../constants/classNames';
 
 const Content = props => {
   const [results, setResults] = useState([]);
+  // const [shortenResults, setShortenResults] = useState([]);
   const [loaded, setLoaded] = useState(false);
   const search = props.match.params.category;
 
   const { content } = classNames.content;
-  console.log(props);
-  console.log('hola');
 
   const url = `http://localhost:4002/search/${search}`;
 
   useEffect(() => {
     apiCall(url, setLoaded, setResults);
+    // setShortenResults(results.items.slice(0));
   }, [url]);
 
   return (
@@ -29,7 +29,7 @@ const Content = props => {
         <div>
           <Breadcrumb category={results.items[0].category_id} />
           <div className={content}>
-            {results.items.map(element => (
+            {results.items.slice(0, 4).map(element => (
               <Product result={element} />
             ))}
           </div>
