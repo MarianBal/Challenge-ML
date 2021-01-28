@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import Product from '../Product';
 import Breadcrumb from '../Breadcrumb';
 import Header from '../Header';
+import NotFound from '../NotFound';
 import apiCall from '../../utils/apiCall';
 import { classNames } from './../../constants/classNames';
 
@@ -12,7 +13,8 @@ const Content = props => {
   const search = props.match.params.category;
 
   const { content } = classNames.content;
-  console.log('Hola');
+  console.log(props);
+  console.log('hola');
 
   const url = `http://localhost:4002/search/${search}`;
 
@@ -23,7 +25,7 @@ const Content = props => {
   return (
     <>
       <Header />
-      {loaded && (
+      {loaded ? (
         <div>
           <Breadcrumb category={results.items[0].category_id} />
           <div className={content}>
@@ -32,6 +34,8 @@ const Content = props => {
             ))}
           </div>
         </div>
+      ) : (
+        <NotFound />
       )}
     </>
   );

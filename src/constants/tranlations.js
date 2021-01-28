@@ -16,5 +16,8 @@ export const translations = {
     sold: 'vendidos',
     buy: 'Comprar',
     title: 'Descripción del producto'
+  },
+  notFoundText: {
+    text: 'No hay resultados para esta búsqueda'
   }
 };

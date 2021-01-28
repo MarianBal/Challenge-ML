@@ -28,5 +28,8 @@ export const classNames = {
     secondColumn: 'second-column',
     detailImg: 'detail-img',
     buyButton: 'buy-button'
+  },
+  notFound: {
+    notContent: 'not-content'
   }
 };

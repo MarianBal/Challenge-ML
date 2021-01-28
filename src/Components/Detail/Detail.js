@@ -4,6 +4,7 @@ import { translations } from './../../constants/tranlations';
 import apiCall from '../../utils/apiCall';
 import Breadcrumb from '../Breadcrumb';
 import Header from '../Header';
+import NotFound from '../NotFound';
 
 import './detail.scss';
 
@@ -29,7 +30,7 @@ const Detail = props => {
   return (
     <>
       <Header />
-      {loaded && (
+      {loaded ? (
         <div>
           <Breadcrumb category={result.item.category_id} />
           <div className={detailContainer}>
@@ -57,6 +58,8 @@ const Detail = props => {
             </div>
           </div>
         </div>
+      ) : (
+        <NotFound />
       )}
     </>
   );
