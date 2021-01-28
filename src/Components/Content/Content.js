@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import Product from '../Product';
 import Breadcrumb from '../Breadcrumb';
 import Header from '../Header';
-import NotFound from '../NotFound';
+import Spinner from '../Spinner';
 import apiCall from '../../utils/apiCall';
 import { classNames } from './../../constants/classNames';
 
@@ -35,7 +35,7 @@ const Content = props => {
           </div>
         </div>
       ) : (
-        <NotFound />
+        <Spinner />
       )}
     </>
   );

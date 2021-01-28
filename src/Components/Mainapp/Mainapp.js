@@ -5,7 +5,6 @@ import { classNames } from './../../constants/classNames';
 import Header from './../Header';
 import Content from './../Content';
 import Detail from './../Detail';
-import NotFound from './../NotFound';
 
 import './mainapp.scss';
 
@@ -18,7 +17,6 @@ const Mainapp = () => {
         <Route exact path='/' component={Header} />
         <Route path='/search/:category' component={Content} />
         <Route path='/items/:id' component={Detail} />
-        <Route path='/not-found' component={NotFound} />
       </Switch>
     </div>
   );

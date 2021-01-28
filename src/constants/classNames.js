@@ -29,7 +29,9 @@ export const classNames = {
     detailImg: 'detail-img',
     buyButton: 'buy-button'
   },
-  notFound: {
-    notContent: 'not-content'
+  spinner: {
+    spinnerContent: 'spinner-content',
+    content: 'content',
+    spinner: 'spinner'
   }
 };

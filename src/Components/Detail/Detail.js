@@ -4,7 +4,7 @@ import { translations } from './../../constants/tranlations';
 import apiCall from '../../utils/apiCall';
 import Breadcrumb from '../Breadcrumb';
 import Header from '../Header';
-import NotFound from '../NotFound';
+import Spinner from '../Spinner';
 
 import './detail.scss';
 
@@ -59,7 +59,7 @@ const Detail = props => {
           </div>
         </div>
       ) : (
-        <NotFound />
+        <Spinner />
       )}
     </>
   );
