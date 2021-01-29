@@ -21,6 +21,7 @@
       border-radius: $border-radius;
       overflow: hidden;
       @include flexbox(row, center, center);
+
       img {
         width: auto;
         height: 100%;
@@ -56,6 +57,7 @@
       @include flexbox(row, center, center);
     }
   }
+
   .first-column:last-child {
     width: 680px;
     margin: $large-margin 0;

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+
 import { classNames } from './../../constants/classNames';
 import { translations } from './../../constants/tranlations';
 import apiCall from '../../utils/apiCall';
@@ -20,12 +21,10 @@ const Detail = props => {
     buyButton
   } = classNames.detail;
   const { newText, sold, buy, title } = translations.detailText;
-  console.log('algo');
-  const url = `http://localhost:4002/items/${productId}`;
 
-  useEffect(() => {
-    apiCall(url, setLoaded, setResult);
-  }, [url]);
+  const url = `${process.env.REACT_APP_URL}/items/${productId}`;
+
+  useEffect(() => apiCall(url, setLoaded, setResult), [url]);
 
   return (
     <>

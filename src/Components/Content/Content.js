@@ -9,18 +9,14 @@ import { classNames } from './../../constants/classNames';
 
 const Content = props => {
   const [results, setResults] = useState([]);
-  // const [shortenResults, setShortenResults] = useState([]);
   const [loaded, setLoaded] = useState(false);
   const search = props.match.params.category;
 
   const { content } = classNames.content;
 
-  const url = `http://localhost:4002/search/${search}`;
+  const url = `${process.env.REACT_APP_URL}/search/${search}`;
 
-  useEffect(() => {
-    apiCall(url, setLoaded, setResults);
-    // setShortenResults(results.items.slice(0));
-  }, [url]);
+  useEffect(() => apiCall(url, setLoaded, setResults), [url]);
 
   return (
     <>

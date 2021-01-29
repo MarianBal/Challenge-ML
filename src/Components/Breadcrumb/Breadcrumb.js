@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 
 import apiCall from '../../utils/apiCall';
 import { classNames } from './../../constants/classNames';
+import { translations } from './../../constants/tranlations';
 
 import './breadcrumb.scss';
 
@@ -11,11 +12,9 @@ const Breadcrumb = ({ category }) => {
 
   const { breadcrumbContainer, bold } = classNames.breadcrumb;
 
-  const url = `http://localhost:4002/categories/${category}`;
+  const url = `${process.env.REACT_APP_URL}/categories/${category}`;
 
-  useEffect(() => {
-    apiCall(url, setLoaded, setCategories);
-  }, [url]);
+  useEffect(() => apiCall(url, setLoaded, setCategories), [url]);
 
   return (
     <div className={breadcrumbContainer}>
@@ -28,7 +27,8 @@ const Breadcrumb = ({ category }) => {
               ) : (
                 <span className={bold}>{element.name} </span>
               )}
-              {index < categories.length - 1 && ' > '}
+              {index < categories.length - 1 &&
+                translations.breadcrumb.angleBrackets}
             </div>
           ))}
         </>

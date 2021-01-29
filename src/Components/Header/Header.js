@@ -23,6 +23,7 @@ const Header = () => {
     imgAlt,
     buttonAlt
   } = translations.headerText;
+
   return (
     <div className={header}>
       <div className={container}>

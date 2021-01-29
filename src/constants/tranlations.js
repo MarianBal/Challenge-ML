@@ -6,7 +6,9 @@ export const translations = {
     imgAlt: 'Logo Mercado Libre',
     buttonAlt: 'Botón de búsqueda'
   },
-
+  breadcrumb: {
+    angleBrackets: ' > '
+  },
   productText: {
     imgAlt: 'Envío',
     currencyARG: '$'
