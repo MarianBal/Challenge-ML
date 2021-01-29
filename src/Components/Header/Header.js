@@ -40,7 +40,7 @@ const Header = () => {
           value={search}
           onChange={event => setSearch(event.target.value)}
         />
-        <Link to={addressSearch}>
+        <Link to={search.length ? addressSearch : urlHome}>
           <div
             className={searchButton}
             onClick={() => clearInput(setSearch, '')}

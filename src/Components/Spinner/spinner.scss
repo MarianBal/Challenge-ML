@@ -17,8 +17,8 @@
     border-radius: 50%;
     border: 5px solid $dark-color;
     background: transparent;
-    border-top-color: $background-color;
-    border-bottom-color: $background-color;
+    border-top-color: $light-color;
+    border-bottom-color: $light-color;
     border-left-color: $dark-color;
     animation: spin 1.5s linear infinite;
     position: relative;
