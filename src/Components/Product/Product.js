@@ -31,6 +31,7 @@ const Product = ({ result }) => {
             <div className={currency}>
               {result?.price?.currency === 'ARS' && currencyARG}
               {result?.price?.amount}
+              {result?.price?.decimals && `,${result?.price?.decimals}`}
               {result?.free_shipping && <img src={Shipping} alt={imgAlt} />}
             </div>
             {result?.title}

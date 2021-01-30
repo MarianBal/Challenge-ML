@@ -25,7 +25,7 @@ const Detail = props => {
   const url = `${process.env.REACT_APP_URL}/items/${productId}`;
 
   useEffect(() => apiCall(url, setLoaded, setResult), [url]);
-
+  console.log(result?.item?.price?.decimals);
   return (
     <>
       <Header />
@@ -48,6 +48,8 @@ const Detail = props => {
                 {result?.item?.price?.currency === 'ARS' &&
                   translations.productText.currencyARG}
                 {result?.item?.price?.amount}
+                {result?.item?.price?.decimals &&
+                  `,${result?.item?.price?.decimals}`}
               </div>
               <div className={buyButton}>{buy}</div>
             </div>

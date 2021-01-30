@@ -33,8 +33,8 @@ app.get('/search/:query', (req, res) => {
             title: element.title,
             price: {
               currency: element.currency_id,
-              amount: element.price,
-              decimals: 'Number'
+              amount: parseFloat(element.price),
+              decimals: parseFloat(element.decimals)
             },
             picture: element.thumbnail,
             condition: element.condition,
@@ -105,14 +105,14 @@ app.get('/items/:query', (req, res) => {
         item.title = result.title;
         item.price = {
           currency: result.currency_id,
-          amount: result.price
+          amount: parseFloat(result.price),
+          decimals: parseFloat(result.decimals)
         };
 
         item.category_id = result.category_id;
         item.picture = result.pictures[0];
         item.condition = result.condition;
-        item.sold_quantity = result.sold_quantity;
-        item.sold_currency_id = result.currency_id;
+        item.sold_quantity = parseFloat(result.sold_quantity);
 
         request(
           `https://api.mercadolibre.com/items/${itemId}/description`,
