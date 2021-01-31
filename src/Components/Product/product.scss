@@ -19,6 +19,7 @@
     width: 180px;
     height: 180px;
     overflow: hidden;
+
     @include flexbox(row, center, center);
 
     img {
@@ -39,7 +40,7 @@
     }
 
     .data-column:first-child {
-      width: 60%;
+      width: 464px;
       font-size: 18px;
     }
 

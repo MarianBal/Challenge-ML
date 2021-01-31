@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import Shipping from '../../img/ic_shipping.png';
 import { classNames } from './../../constants/classNames';
 import { translations } from './../../constants/tranlations';
+import changeToARSValue from '../../utils/changeToARSValue';
 
 import './product.scss';
 
@@ -30,7 +31,9 @@ const Product = ({ result }) => {
           <div className={dataColumn}>
             <div className={currency}>
               {result?.price?.currency === 'ARS' && currencyARG}
-              {result?.price?.amount}
+              {result?.price?.currency === 'ARS'
+                ? changeToARSValue(result?.price?.amount)
+                : result?.price?.amount}
               {result?.price?.decimals && `,${result?.price?.decimals}`}
               {result?.free_shipping && <img src={Shipping} alt={imgAlt} />}
             </div>

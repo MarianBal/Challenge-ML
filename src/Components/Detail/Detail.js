@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 
 import { classNames } from './../../constants/classNames';
 import { translations } from './../../constants/tranlations';
+import changeToARSValue from '../../utils/changeToARSValue';
 import apiCall from '../../utils/apiCall';
 import Breadcrumb from '../Breadcrumb';
 import Header from '../Header';
@@ -25,7 +26,7 @@ const Detail = props => {
   const url = `${process.env.REACT_APP_URL}/items/${productId}`;
 
   useEffect(() => apiCall(url, setLoaded, setResult), [url]);
-  console.log(result?.item?.price?.decimals);
+
   return (
     <>
       <Header />
@@ -47,9 +48,14 @@ const Detail = props => {
               <div>
                 {result?.item?.price?.currency === 'ARS' &&
                   translations.productText.currencyARG}
-                {result?.item?.price?.amount}
-                {result?.item?.price?.decimals &&
-                  `,${result?.item?.price?.decimals}`}
+                {result?.item?.price?.currency === 'ARS'
+                  ? changeToARSValue(result?.item?.price?.amount)
+                  : result?.item?.price?.amount}
+                <span>
+                  {result?.item?.price?.decimals
+                    ? `,${result?.item?.price?.decimals}`
+                    : '00'}
+                </span>
               </div>
               <div className={buyButton}>{buy}</div>
             </div>
