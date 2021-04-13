@@ -25,38 +25,41 @@ app.get('/search/:query', (req, res) => {
     items: []
   };
 
-  request(`${baseUrl}sites/MLA/search?q=${searchProduct}`, (err, res, body) => {
-    if (!err) {
-      const result = JSON.parse(body);
+  request(
+    `${baseUrl}sites/MLA/search?q=${searchProduct}`,
+    (err, response, body) => {
+      if (!err) {
+        const result = JSON.parse(body);
 
-      result.results.map(element => {
-        item = {
-          id: element.id,
-          title: element.title,
-          price: {
-            currency: element.currency_id,
-            amount: parseFloat(element.price),
-            decimals: parseFloat(element.decimals)
-          },
-          picture: element.thumbnail,
-          condition: element.condition,
-          free_shipping: element.shipping.free_shipping,
-          address: {
-            state_name: element.address.state_name
-          },
-          category_id: element.category_id
-        };
-        return products.items.push(item);
-      });
+        result.results.map(element => {
+          item = {
+            id: element.id,
+            title: element.title,
+            price: {
+              currency: element.currency_id,
+              amount: parseFloat(element.price),
+              decimals: parseFloat(element.decimals)
+            },
+            picture: element.thumbnail,
+            condition: element.condition,
+            free_shipping: element.shipping.free_shipping,
+            address: {
+              state_name: element.address.state_name
+            },
+            category_id: element.category_id
+          };
+          return products.items.push(item);
+        });
 
-      res.json(products);
+        res.json(products);
+      }
+      if (err) {
+        console.log(err);
+        res.status(400).send(err);
+        return;
+      }
     }
-    if (err) {
-      console.log(err);
-      res.status(400).send(err);
-      return;
-    }
-  });
+  );
 });
 
 app.get('/categories/:query', (req, res) => {
@@ -88,7 +91,7 @@ app.get('/items/:query', (req, res) => {
     item: {}
   };
 
-  request(`${baseUrl}items/${itemId}`, (err, res, body) => {
+  request(`${baseUrl}items/${itemId}`, (err, response, body) => {
     if (!err) {
       const result = JSON.parse(body);
 
@@ -107,21 +110,24 @@ app.get('/items/:query', (req, res) => {
       item.condition = result.condition;
       item.sold_quantity = parseFloat(result.sold_quantity);
 
-      request(`${baseUrl}items/${itemId}/description`, (err, res, body) => {
-        if (!err) {
-          const result = JSON.parse(body);
+      request(
+        `${baseUrl}items/${itemId}/description`,
+        (err, response, body) => {
+          if (!err) {
+            const result = JSON.parse(body);
 
-          item.description = result.plain_text;
+            item.description = result.plain_text;
 
-          res.json(product);
+            res.json(product);
+          }
+
+          if (err) {
+            console.log(err);
+            res.status(400).send(err);
+            return;
+          }
         }
-
-        if (err) {
-          console.log(err);
-          res.status(400).send(err);
-          return;
-        }
-      });
+      );
     }
 
     if (err) {
