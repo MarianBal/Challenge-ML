@@ -25,7 +25,7 @@ const Content = props => {
         <div>
           <Breadcrumb category={results.items[0].category_id} />
           <div className={content}>
-            {results.items.slice(0, 4).map(element => (
+            {results.items.map(element => (
               <Product result={element} />
             ))}
           </div>
