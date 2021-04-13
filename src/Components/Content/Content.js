@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 
-import Product from '../Product';
-import Breadcrumb from '../Breadcrumb';
-import Header from '../Header';
-import Spinner from '../Spinner';
+import Product from '../Product/Product';
+import Breadcrumb from '../Breadcrumb/Breadcrumb';
+import Header from '../Header/Header';
+import Spinner from '../Spinner/Spinner';
 import apiCall from '../../utils/apiCall';
 import { classNames } from './../../constants/classNames';
 

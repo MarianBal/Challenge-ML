@@ -4,9 +4,9 @@ import { classNames } from './../../constants/classNames';
 import { translations } from './../../constants/tranlations';
 import changeToARSValue from '../../utils/changeToARSValue';
 import apiCall from '../../utils/apiCall';
-import Breadcrumb from '../Breadcrumb';
-import Header from '../Header';
-import Spinner from '../Spinner';
+import Breadcrumb from '../Breadcrumb/Breadcrumb';
+import Header from '../Header/Header';
+import Spinner from '../Spinner/Spinner';
 
 import './detail.scss';
 

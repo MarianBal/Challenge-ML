@@ -2,9 +2,9 @@ import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 
 import { classNames } from './../../constants/classNames';
-import Header from './../Header';
-import Content from './../Content';
-import Detail from './../Detail';
+import Header from './../Header/Header';
+import Content from './../Content/Content';
+import Detail from './../Detail/Detail';
 
 import './mainapp.scss';
 
